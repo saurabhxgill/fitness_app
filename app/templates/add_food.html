@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add Food Item</h2>
+<form method="POST">
+    <div>
+        <label for="name">Food Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="calories">Calories (per unit):</label>
+        <input type="number" id="calories" name="calories" required>
+    </div>
+    <div>
+        <label for="proteins">Proteins (per unit):</label>
+        <input type="number" id="proteins" name="proteins" required>
+    </div>
+    <div>
+        <label for="carbs">Carbs (per unit):</label>
+        <input type="number" id="carbs" name="carbs" required>
+    </div>
+    <div>
+        <label for="fats">Fats (per unit):</label>
+        <input type="number" id="fats" name="fats" required>
+    </div>
+    <div>
+        <label for="fiber">Fiber (per unit):</label>
+        <input type="number" id="fiber" name="fiber" required>
+    </div>
+    <div>
+        <label for="unit">Unit:</label>
+        <select id="unit" name="unit">
+            <option value="grams">grams</option>
+            <option value="ml">ml</option>
+            <option value="pieces">pieces</option>
+        </select>
+    </div>
+    <button type="submit">Add Food Item</button>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add Food Item to Meal</h2>
+<form method="POST">
+    <div>
+        <label for="food_item_id">Select Food Item:</label>
+        <select id="food_item_id" name="food_item_id" required>
+            {% for item in food_items %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+    </div>
+    <button type="submit">Add Food Item to Meal</button>
+</form>
+{% endblock %}

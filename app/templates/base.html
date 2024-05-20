@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Calorie Tracker</h1>
+        {% if current_user.is_authenticated %}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.add_meal') }}">Add Meal</a></li>
+                <li><a href="{{ url_for('main.add_food') }}">Add Food Item</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        {% else %}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                <li><a href="{{ url_for('main.register') }}">Sign Up</a></li>
+            </ul>
+        </nav>
+        {% endif %}
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>Calorie Tracker © 2024</p>
+    </footer>
+</body>
+
+</html>
